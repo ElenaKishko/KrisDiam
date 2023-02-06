@@ -1,0 +1,270 @@
+*
+    margin: 0
+.main_wrapper
+    min-height: 100vh
+    position: relative
+    padding-bottom: 102px
+.container
+    max-width: 1200px
+    margin: 0 auto    
+
+.test
+    width: 300px
+.test2
+    padding-top: 150px
+a
+    text-decoration: none
+
+.header
+    width: 100% 
+    position: fixed 
+    z-index: 2 
+    background-color: #fff
+    a   
+        color: $text_color
+        font-size: 13px
+        font-weight: 300
+    .wrapper
+        display: flex
+        justify-content: space-between	
+        align-items: center
+        padding-top: 10px       
+    .wrapper > div
+        width: 33%
+        &:nth-child(3)
+            display: flex
+            justify-content: flex-end
+    &_menu
+        list-style: none
+        justify-content: center
+        &_link
+            padding: 0 20px
+            img
+                margin-left: 2px
+            &:hover
+                font-weight: 500
+    ul
+        display: flex
+    &_icons
+        a
+            padding: 0 12px
+.explore
+    min-height: 947px
+    &_descr
+        margin-top: 421px
+        max-width: 376px
+        color: $text_color
+        font-size: 18px
+        font-weight: 300
+        line-height: 25px
+        letter-spacing: 0.02em
+    &_btn
+        width: 260px
+        height: 69px
+        margin-top: 50px
+        +btn
+        +btn_hover
+    &_img
+        position: relative
+        &_1
+            margin-top: 184px
+            max-width: 448px
+            max-height: 544px
+        &_2
+            max-width: 324px
+            max-height: 404px
+            position: absolute
+            right: 20px
+            top: 541px
+
+footer
+    background-color: $bg_color
+    padding: 20px 0 6px 0
+    position: absolute
+    bottom: 0
+    width: 100%
+    .footer
+        &_wrapper
+            display: flex
+            justify-content: space-between	
+            align-items: center
+        &_logo
+            img
+                width: 135px
+        &_rights
+            +footer_text
+        &_details
+            &_hours
+                +footer_text
+            &_mobile
+                font-size: 18px
+                font-weight: 400
+                line-height: 25px
+                color: $title_color
+.shop
+    background-color: $categories_bg
+    min-height: 777px       
+    &_title
+        font-size: 40px
+        font-weight: 300
+        letter-spacing: 0.05em
+        text-transform: capitalize
+        padding-top: 80px
+    &_categories
+        display: flex
+        justify-content: space-between
+        padding-top: 40px
+        &_item
+            width: 384px
+            height: 484px
+            background-color: $white_color
+            &_title
+                font-size: 22px
+                font-weight: 300
+                letter-spacing: 0.03em
+                margin-top: 30px
+                text-align: center
+            &_img
+                height: 368px
+                width: 324px
+                margin: 0 auto
+                background-color: $bg_color
+                margin-top: 30px
+                img
+                    display: block
+                    margin: 0 auto
+                    width: 250px
+                    padding-top: 60px
+.contact
+    margin: 110px 0
+    &_img
+        border: 1px solid $border_color
+        min-height: 360px
+        img
+            max-height: 320px
+            display: block
+            margin: auto
+            margin-top: 20px
+    &_descr
+        font-weight: 300
+        letter-spacing: 0.01em
+        margin-left: 129px
+        &_title
+            font-size: 38px
+            color: $title_color
+        &_text
+            font-size: 18px
+            color: $text_color
+            max-width: 297px
+            line-height: 25px
+            margin-top: 34px
+    &_form
+        margin-left: 150px
+        form
+            display: flex
+            flex-direction: column
+            max-width: 320px
+            input, textarea
+                font-family: "Atlas Grotesk"
+                min-height: 69px
+                margin-bottom: 15px
+                border: 1px solid $border_color       
+                font-size: 18px
+                font-weight: 400
+                color: $input_color
+                padding-left: 22px  
+                outline: none
+                &::placeholder
+                    padding-top: 22px
+                &:focus-visible
+                    border: 1px solid $text_color
+                    &::placeholder
+                        color: transparent
+                &:nth-child(3)
+                    min-height: 108px
+                &:last-child
+                    margin-bottom: 0
+                    padding: 0
+                    +btn
+                    +btn_hover
+.product
+    padding-top: 157px
+    &_nav
+        font-size: 18px
+        font-weight: 300
+        letter-spacing: 0.01em
+        a
+            color: $text_color
+    &_img
+        margin-top: 30px
+        img
+            width: 100%
+    &_info
+        margin-top: 170px
+        &_title
+            font-size: 20px
+            font-weight: 300
+            letter-spacing: 0.12em
+            text-transform: capitalize
+            color: $title_color
+        &_price
+            margin-top: 20px
+            font-size: 16px
+            font-weight: 400
+            color: $text_color
+        &_descr
+            margin-top: 60px
+            font-size: 18px
+            font-weight: 300
+            letter-spacing: 0.01em
+            max-width: 282px    
+            color: $text_color
+        &_btn
+            margin: 50px 0 87px 0
+            width: 282px
+            height: 69px
+            +btn
+            +btn_hover
+        &_divider
+            height: 1px
+            width: 384px
+            background-color: $input_color
+            margin-bottom: 18px
+        &_arrow
+            background: none
+            border: none
+            transition: 0.3s all
+            &_active
+                background: none
+                border: none
+                transform: translateY(-3px) rotate(180deg)
+                transition: 0.3s all
+        &_title
+            font-size: 13px
+            font-weight: 300
+            letter-spacing: 0.04em
+            text-transform: uppercase
+        &_wrapper
+            display: flex
+            justify-content: space-between
+            max-width: 384px
+        &_specsAndShipping
+            margin-bottom: 20px
+            color: $text_color
+            ul 
+                margin-top: 11px
+                li
+                    font-size: 11px
+                    font-weight: 300
+                    letter-spacing: 0.01em
+                    text-transform: lowercase
+                    line-height: 15px
+        
+                
+        
+                    
+                    
+        
+                        
+
+           

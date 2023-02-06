@@ -1,0 +1,456 @@
+@font-face {
+  font-family: "Atlas Grotesk";
+  font-weight: 100;
+  src: local("AtlasGrotesk-thin"), url("../fonts/ATLASGROTESK-THIN.OTF") format("otf");
+}
+@font-face {
+  font-family: "Atlas Grotesk";
+  font-weight: 300;
+  src: local("AtlasGrotesk-light"), url("../fonts/ATLASGROTESK-LIGHT.OTF") format("otf");
+}
+@font-face {
+  font-family: "Atlas Grotesk";
+  font-weight: 400;
+  src: local("AtlasGrotesk-regular"), url("../fonts/ATLASGROTESK-REGULAR.OTF") format("otf");
+}
+@font-face {
+  font-family: "Atlas Grotesk";
+  font-weight: 500;
+  src: local("AtlasGrotesk-medium"), url("../fonts/ATLASGROTESK-MEDIUM.OTF") format("otf");
+}
+@font-face {
+  font-family: "Atlas Grotesk";
+  font-weight: 700;
+  src: local("AtlasGrotesk-black"), url("../fonts/ATLASGROTESK-BLACK.OTF") format("otf");
+}
+* {
+  margin: 0;
+}
+
+.main_wrapper {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 102px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.test {
+  width: 300px;
+}
+
+.test2 {
+  padding-top: 150px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  background-color: #fff;
+}
+.header a {
+  color: grey;
+  font-size: 13px;
+  font-weight: 300;
+}
+.header .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 10px;
+}
+.header .wrapper > div {
+  width: 33%;
+}
+.header .wrapper > div:nth-child(3) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.header_menu {
+  list-style: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.header_menu_link {
+  padding: 0 20px;
+}
+.header_menu_link img {
+  margin-left: 2px;
+}
+.header_menu_link:hover {
+  font-weight: 500;
+}
+.header ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.header_icons a {
+  padding: 0 12px;
+}
+
+.explore {
+  min-height: 947px;
+}
+.explore_descr {
+  margin-top: 421px;
+  max-width: 376px;
+  color: grey;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 25px;
+  letter-spacing: 0.02em;
+}
+.explore_btn {
+  width: 260px;
+  height: 69px;
+  margin-top: 50px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#AB0E66), to(#D4749A));
+  background-image: linear-gradient(to top, #AB0E66 0%, #D4749A 100%);
+  border: none;
+  border-radius: 4px;
+}
+.explore_btn:hover {
+  background-image: none;
+  background-color: #D4749A;
+}
+.explore_img {
+  position: relative;
+}
+.explore_img_1 {
+  margin-top: 184px;
+  max-width: 448px;
+  max-height: 544px;
+}
+.explore_img_2 {
+  max-width: 324px;
+  max-height: 404px;
+  position: absolute;
+  right: 20px;
+  top: 541px;
+}
+
+footer {
+  background-color: #EEDFE7;
+  padding: 20px 0 6px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+footer .footer_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+footer .footer_logo img {
+  width: 135px;
+}
+footer .footer_rights {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 19px;
+  letter-spacing: 0.04em;
+  color: grey;
+}
+footer .footer_details_hours {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 19px;
+  letter-spacing: 0.04em;
+  color: grey;
+}
+footer .footer_details_mobile {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 25px;
+  color: #1F1F1F;
+}
+
+.shop {
+  background-color: #F8EFF4;
+  min-height: 777px;
+}
+.shop_title {
+  font-size: 40px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+  padding-top: 80px;
+}
+.shop_categories {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-top: 40px;
+}
+.shop_categories_item {
+  width: 384px;
+  height: 484px;
+  background-color: #ffffff;
+}
+.shop_categories_item_title {
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  margin-top: 30px;
+  text-align: center;
+}
+.shop_categories_item_img {
+  height: 368px;
+  width: 324px;
+  margin: 0 auto;
+  background-color: #EEDFE7;
+  margin-top: 30px;
+}
+.shop_categories_item_img img {
+  display: block;
+  margin: 0 auto;
+  width: 250px;
+  padding-top: 60px;
+}
+
+.contact {
+  margin: 110px 0;
+}
+.contact_img {
+  border: 1px solid #DABCC6;
+  min-height: 360px;
+}
+.contact_img img {
+  max-height: 320px;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+}
+.contact_descr {
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  margin-left: 129px;
+}
+.contact_descr_title {
+  font-size: 38px;
+  color: #1F1F1F;
+}
+.contact_descr_text {
+  font-size: 18px;
+  color: grey;
+  max-width: 297px;
+  line-height: 25px;
+  margin-top: 34px;
+}
+.contact_form {
+  margin-left: 150px;
+}
+.contact_form form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 320px;
+}
+.contact_form form input, .contact_form form textarea {
+  font-family: "Atlas Grotesk";
+  min-height: 69px;
+  margin-bottom: 15px;
+  border: 1px solid #DABCC6;
+  font-size: 18px;
+  font-weight: 400;
+  color: #9D9D9D;
+  padding-left: 22px;
+  outline: none;
+}
+.contact_form form input::-webkit-input-placeholder, .contact_form form textarea::-webkit-input-placeholder {
+  padding-top: 22px;
+}
+.contact_form form input::-moz-placeholder, .contact_form form textarea::-moz-placeholder {
+  padding-top: 22px;
+}
+.contact_form form input:-ms-input-placeholder, .contact_form form textarea:-ms-input-placeholder {
+  padding-top: 22px;
+}
+.contact_form form input::-ms-input-placeholder, .contact_form form textarea::-ms-input-placeholder {
+  padding-top: 22px;
+}
+.contact_form form input::placeholder, .contact_form form textarea::placeholder {
+  padding-top: 22px;
+}
+.contact_form form input:focus-visible, .contact_form form textarea:focus-visible {
+  border: 1px solid grey;
+}
+.contact_form form input:focus-visible::-webkit-input-placeholder, .contact_form form textarea:focus-visible::-webkit-input-placeholder {
+  color: transparent;
+}
+.contact_form form input:focus-visible::-moz-placeholder, .contact_form form textarea:focus-visible::-moz-placeholder {
+  color: transparent;
+}
+.contact_form form input:focus-visible:-ms-input-placeholder, .contact_form form textarea:focus-visible:-ms-input-placeholder {
+  color: transparent;
+}
+.contact_form form input:focus-visible::-ms-input-placeholder, .contact_form form textarea:focus-visible::-ms-input-placeholder {
+  color: transparent;
+}
+.contact_form form input:focus-visible::placeholder, .contact_form form textarea:focus-visible::placeholder {
+  color: transparent;
+}
+.contact_form form input:nth-child(3), .contact_form form textarea:nth-child(3) {
+  min-height: 108px;
+}
+.contact_form form input:last-child, .contact_form form textarea:last-child {
+  margin-bottom: 0;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#AB0E66), to(#D4749A));
+  background-image: linear-gradient(to top, #AB0E66 0%, #D4749A 100%);
+  border: none;
+  border-radius: 4px;
+}
+.contact_form form input:last-child:hover, .contact_form form textarea:last-child:hover {
+  background-image: none;
+  background-color: #D4749A;
+}
+
+.product {
+  padding-top: 157px;
+}
+.product_nav {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+.product_nav a {
+  color: grey;
+}
+.product_img {
+  margin-top: 30px;
+}
+.product_img img {
+  width: 100%;
+}
+.product_info {
+  margin-top: 170px;
+}
+.product_info_title {
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: capitalize;
+  color: #1F1F1F;
+}
+.product_info_price {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 400;
+  color: grey;
+}
+.product_info_descr {
+  margin-top: 60px;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  max-width: 282px;
+  color: grey;
+}
+.product_info_btn {
+  margin: 50px 0 87px 0;
+  width: 282px;
+  height: 69px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#AB0E66), to(#D4749A));
+  background-image: linear-gradient(to top, #AB0E66 0%, #D4749A 100%);
+  border: none;
+  border-radius: 4px;
+}
+.product_info_btn:hover {
+  background-image: none;
+  background-color: #D4749A;
+}
+.product_info_divider {
+  height: 1px;
+  width: 384px;
+  background-color: #9D9D9D;
+  margin-bottom: 18px;
+}
+.product_info_arrow {
+  background: none;
+  border: none;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+}
+.product_info_arrow_active {
+  background: none;
+  border: none;
+  -webkit-transform: translateY(-3px) rotate(180deg);
+          transform: translateY(-3px) rotate(180deg);
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+}
+.product_info_title {
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.product_info_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 384px;
+}
+.product_info_specsAndShipping {
+  margin-bottom: 20px;
+  color: grey;
+}
+.product_info_specsAndShipping ul {
+  margin-top: 11px;
+}
+.product_info_specsAndShipping ul li {
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  text-transform: lowercase;
+  line-height: 15px;
+}/*# sourceMappingURL=App.css.map */
