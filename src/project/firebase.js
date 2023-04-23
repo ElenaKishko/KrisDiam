@@ -1,10 +1,9 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-app.js"
-import { getStorage } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-storage.js"
-import { getAuth } from 'https://www.gstatic.com/firebasejs/9.9.2/firebase-auth.js'
-import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.9.2/firebase-firestore.js'
+import { firebase, initializeApp } from 'firebase/app'
+import { getStorage } from "firebase/storage"
+import { getAuth } from "firebase/auth"
+import { getFirestore } from "firebase/firestore"
 
-
-const firebaseConfig = {
+const firebaseConfig ={
   apiKey: "AIzaSyDP6BNMvg4iO929zSFp_piV8XSHAsgduwQ",
   authDomain: "krisdiam-9e655.firebaseapp.com",
   databaseURL: "https://krisdiam-9e655-default-rtdb.europe-west1.firebasedatabase.app",
@@ -13,9 +12,9 @@ const firebaseConfig = {
   messagingSenderId: "522933323947",
   appId: "1:522933323947:web:84b6453e804c6381618fee",
   measurementId: "G-353KSGCSWB"
-};
+ }
 
-const app = initializeApp(firebaseConfig)
-export const storage = getStorage(app)
-export const firestore = getFirestore(app)
-export const auth = getAuth(app)
+ export const app = initializeApp(firebaseConfig)
+ export const imgStorage = getStorage(app)
+ export const auth = getAuth(app)
+ export const db = getFirestore(app)

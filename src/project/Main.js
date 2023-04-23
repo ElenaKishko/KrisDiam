@@ -1,12 +1,5 @@
 import { useState } from "react"
-import { storage } from "./firebase.js"
-import { ref ,uploadBytes} from "https://www.gstatic.com/firebasejs/9.9.2/firebase-storage.js"
-import {v4} from 'uuid'
-
-import HeaderComp from "./Header.js"
-import FooterComp from "./Footer.js"
 import ProductsComp from "./Products.js"
-
 import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap-grid.css'
 import Container from 'react-bootstrap/Container'
@@ -21,6 +14,7 @@ import pinkSet from '../img/photos/pinkset.png'
 
 
 function MainComp() {
+  
   const customSubmit = (e) =>
   {
     e.preventDefault();
@@ -31,7 +25,6 @@ function MainComp() {
   return (
     <div className="App">
       <div className="main_wrapper">
-        <HeaderComp/>      
         <section className="explore">
           <Container>
             <Row>
@@ -92,7 +85,6 @@ function MainComp() {
             </Row>
           </Container>
         </section>
-        <FooterComp/>
       </div>
     </div>
   );

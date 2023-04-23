@@ -1,5 +1,6 @@
 *
     margin: 0
+    padding: 0
 .main_wrapper
     min-height: 100vh
     position: relative
@@ -10,8 +11,7 @@
 
 .test
     width: 300px
-.test2
-    padding-top: 150px
+
 a
     text-decoration: none
 
@@ -80,7 +80,6 @@ a
 footer
     background-color: $bg_color
     padding: 20px 0 6px 0
-    position: absolute
     bottom: 0
     width: 100%
     .footer
@@ -259,10 +258,79 @@ footer
                     letter-spacing: 0.01em
                     text-transform: lowercase
                     line-height: 15px
-        
-                
-        
-                    
+.products
+    padding-top: 150px
+    background-color: $categories_bg
+    min-height: 100vh
+    &_container
+        margin-top: 110px
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-between
+    
+.thumbnail
+    &_bg
+        display: flex
+        position: relative
+        flex-direction: column
+        width: 384px
+        height: 460px
+        background-color: $white_color
+        margin-bottom: 104px
+    &_img
+        display: block
+        max-width: 324px
+        max-height: 324px
+        margin: 30px auto
+    &_descr
+        display: flex
+        position: absolute
+        bottom: 30px
+        justify-content: space-between
+        align-items: baseline
+        margin: 0 30px 
+        width: 84%
+        &_name
+            font-size: 22px
+            text-transform: capitalize
+            font-weight: 300    
+            letter-spacing: 0.02em
+        &_price
+            font-size: 16px
+            font-weight: 300
+.filter_and_sort
+    display: flex
+    justify-content: space-between           
+.sort
+    font-size: 13px
+    letter-spacing: 0.02em
+    text-transform: uppercase
+
+.basket
+    padding-top: 200px
+    &_header
+        margin-bottom: 30px
+    &_item     
+        display: flex
+        justify-content: space-between
+        border-radius: 5px
+        margin-bottom: 20px
+        padding: 10px
+        box-shadow: 0 4px 20px rgba(34,34,34,.15)
+        &_info
+            margin-left: -160px
+        &_img
+            img
+                border-radius: 5px
+                width: 100px
+                height: 100px
+        &_remove
+            button
+                border: none
+                background: white
+                outline: none
+
+
                     
         
                         

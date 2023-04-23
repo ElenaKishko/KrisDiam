@@ -1,54 +1,92 @@
 import { useEffect, useState } from "react"
-import { storage } from "./firebase.js"
-import { ref, uploadBytes, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-storage.js"
-import {v4} from 'uuid'
-
-import FooterComp from "./Footer"
-import HeaderComp from "./Header"
+import { imgStorage, auth, db, app} from "./firebase"
+import { getFirestore, collection, query, where, getDocs, doc } from "firebase/firestore"
+import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage"
+import { useSelector, useDispatch } from "react-redux"
+import ProductThumbnailComp from "./ProductThumbnail"
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import FilterComp from "./Filter"
+import DropdownExampleSimple from "./tests/example"
 
 function ProductsComp(props) {
 
-  const [imageUpload, setImageUpload] = useState(null)
+  const storeData = useSelector(state => state)
+  const [products, setProducts] = useState(storeData.wholeCollection)
+  const [type, setType] = useState("")
+  const [gemstone, setGemstone] = useState("")
+  const [sort, setSort] = useState("")
 
-  const uploadImage = () => {
-    if(imageUpload == null) return;
-    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`)
-    uploadBytes(imageRef, imageUpload).then((snaphsot) => {
-      getDownloadURL(snaphsot.ref).then((url) => {
-        setImageList((prev) => [...prev, url])
-      })
-    })
+  const filterByType = (event) => {
+    setType(event.target.value)
+    if(event.target.value == ""){
+      setProducts(storeData.wholeCollection)
+      console.log(products)
+    }
+    else{
+      setProducts(storeData.wholeCollection.filter((product) => product.type == event.target.value))
+      console.log(products)
+    }
   }
 
-  const[imageList, setImageList] = useState([])
-  const imageListRef = ref(storage, "images/")
+  const filterByGemstone = (event) => {
+    setGemstone(event.target.value)
+    if(event.target.value == ""){
+      setProducts(storeData.wholeCollection)
+      console.log(products)
+    }
+    else{
+      setProducts(storeData.wholeCollection.filter((product) => product.gemstone == event.target.value))
+      console.log(products)
+    }
+  }
 
-  useEffect(() => {
-    listAll(imageListRef).then((response) => {
-      response.items.forEach((item) => {
-        getDownloadURL(item).then((url) => {
-          setImageList((prev) => [...prev, url])
-        })
-      })
-    })
-  },[])
+  const sortProducts = (event) => {
+    console.log(event.target.value)
+    setSort(event.target.value)
 
-  return (
-    <div className="App">
-      <div className="main_wrapper">
-        <HeaderComp/>
-        <div className="test2">
-          <input type="file" onChange={(event) => {setImageUpload(event.target.files[0])}}/>
-          <button onClick={uploadImage}>Upload image</button>
+    setProducts(products.sort((a,b) => (
+      sort === "lowest"?
+      ((a.price < b.price) ? 1:-1):
+      sort === "highest"?
+      ((a.price > b.price) ? 1:-1):
+      sort === "newest"? 
+      ((a.id > b.id) ? 1:-1):
+      ((a.id < b.id) ? 1:-1)
+    )))
+
+  }
+
+    return (
+      <div className="App">
+        <div className="products">
+          <Container>
+            <FilterComp type={type}
+              gemstone={gemstone}
+              sort={sort}
+              filterByType={filterByType}
+              filterByGemstone={filterByGemstone}
+              sortProducts={sortProducts}/>
+            <DropdownExampleSimple  type={type}
+              gemstone={gemstone}
+              sort={sort}
+              filterByType={filterByType}
+              filterByGemstone={filterByGemstone}
+              sortProducts={sortProducts}/>
+          </Container>
+          <Container className="products_container">
+                {
+                  products.map(item =>
+                    {
+                      return <div key={item.id}>
+                          <ProductThumbnailComp key={item.id} product={item}/>
+                      </div>
+                    })
+                }
+          </Container>
         </div>
-        {imageList.map((url) => {
-          return <div>
-                  <img className="test" src={url}/>
-                </div>
-        })}
-        <FooterComp/>
       </div>
-    </div>
-  );
+    );
 }
 export default ProductsComp;
