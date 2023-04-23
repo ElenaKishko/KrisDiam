@@ -16,7 +16,7 @@ function ProductThumbnailComp(props) {
               <div className="thumbnail_descr_price">{product.price} nis</div>
 
             </div> 
-            <button className="product_info_btn" onClick={action(() => {CartStore.addToCart(product)})}>Add To Cart</button>
+            {/* <button className="product_info_btn" onClick={action(() => {CartStore.addToCart(product)})}>Add To Cart</button> */}
           </div>
       </div>
     );
