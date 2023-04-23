@@ -1,6 +1,15 @@
-import DropdownExampleSimple from "./tests/example"
+import { Dropdown, Menu } from 'semantic-ui-react'
 
 function FilterComp(props) {
+    const options = [
+        { key: 1, text: 'Price, low to high', value: "lowest" },
+        { key: 2, text: 'Price, high to low', value: "highest" }
+      ]
+    const setValue = (event) =>
+    {   
+        console.log(event.target.value);
+
+    }
     return (
       <div className="App">
         <div className="filter_and_sort">
@@ -26,25 +35,30 @@ function FilterComp(props) {
                     </select>
                 </div>
             </div>
+
+            {/* <select value={props.type} onChange={props.filterByType} className="custom-select container m-2" >
+                <option value="">All</option>
+                <option value="earrings">Earrings</option>
+                <option value="ring">Rings</option>
+                <option value="set">Sets</option>
+                <option value="pendant">Pendants</option>
+            </select> */}
+
             <div className="sort">
             Sort by
                 <select value={props.sort} onChange={props.sortProducts}>
                     <option value=""></option>
                     <option value="lowest">Price, low to high</option>
                     <option value="highest">Price, high to low</option>
-                    <option value="newest">Date, new to old</option>
-                    <option value="oldest">Date, old to new</option>
                 </select>
             </div>
         </div>
-        
-        {/* <select value={props.type} onChange={props.filterByType} className="custom-select container m-4" >
-            <option value="">All</option>
-            <option value="earrings">Earrings</option>
-            <option value="ring">Rings</option>
-            <option value="set">Sets</option>
-            <option value="pendant">Pendants</option>
-        </select> */}
+
+        {/* <Menu compact>
+            <Dropdown value={options.value} onChange={(value) => setValue(value)} text='SORT BY' options={options} simple item />
+
+            <Dropdown value={props.sort} onChange={props.sortProducts} text='SORT BY' options={options} simple item />
+        </Menu> */}
       </div>
     );
 }

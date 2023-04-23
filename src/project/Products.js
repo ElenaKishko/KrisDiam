@@ -8,7 +8,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import FilterComp from "./Filter"
-import DropdownExampleSimple from "./tests/example"
+import DropdownExampleSimple from "./DropdownExampleSimple"
 
 function ProductsComp(props) {
 
@@ -18,15 +18,23 @@ function ProductsComp(props) {
   const [gemstone, setGemstone] = useState("")
   const [sort, setSort] = useState("")
 
+  useEffect(() => 
+  {
+    console.log(sort);
+    setProducts(products.sort((a,b) => 
+    (
+      sort === "lowest" ? ((a.price < b.price) ? 1:-1) : sort === "highest" ? ((a.price > b.price) ? 1:-1) : "" ))
+    ) 
+  },[sort])
+
   const filterByType = (event) => {
+    console.log(event.target.value);
     setType(event.target.value)
     if(event.target.value == ""){
       setProducts(storeData.wholeCollection)
-      console.log(products)
     }
     else{
       setProducts(storeData.wholeCollection.filter((product) => product.type == event.target.value))
-      console.log(products)
     }
   }
 
@@ -34,41 +42,23 @@ function ProductsComp(props) {
     setGemstone(event.target.value)
     if(event.target.value == ""){
       setProducts(storeData.wholeCollection)
-      console.log(products)
     }
     else{
       setProducts(storeData.wholeCollection.filter((product) => product.gemstone == event.target.value))
-      console.log(products)
     }
   }
 
   const sortProducts = (event) => {
-    console.log(event.target.value)
     setSort(event.target.value)
-
-    setProducts(products.sort((a,b) => (
-      sort === "lowest"?
-      ((a.price < b.price) ? 1:-1):
-      sort === "highest"?
-      ((a.price > b.price) ? 1:-1):
-      sort === "newest"? 
-      ((a.id > b.id) ? 1:-1):
-      ((a.id < b.id) ? 1:-1)
-    )))
-
+    console.log(event.target.value)
   }
 
     return (
       <div className="App">
         <div className="products">
           <Container>
-            <FilterComp type={type}
-              gemstone={gemstone}
-              sort={sort}
-              filterByType={filterByType}
-              filterByGemstone={filterByGemstone}
-              sortProducts={sortProducts}/>
-            <DropdownExampleSimple  type={type}
+            <FilterComp 
+              type={type}
               gemstone={gemstone}
               sort={sort}
               filterByType={filterByType}
