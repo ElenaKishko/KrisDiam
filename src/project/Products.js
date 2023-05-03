@@ -8,49 +8,33 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import FilterComp from "./Filter"
-import DropdownExampleSimple from "./DropdownExampleSimple"
 
-function ProductsComp(props) {
+function ProductsComp() {
 
   const storeData = useSelector(state => state)
   const [products, setProducts] = useState(storeData.wholeCollection)
-  const [type, setType] = useState("")
-  const [gemstone, setGemstone] = useState("")
-  const [sort, setSort] = useState("")
 
-  useEffect(() => 
-  {
-    console.log(sort);
-    setProducts(products.sort((a,b) => 
-    (
-      sort === "lowest" ? ((a.price < b.price) ? 1:-1) : sort === "highest" ? ((a.price > b.price) ? 1:-1) : "" ))
-    ) 
-  },[sort])
-
-  const filterByType = (event) => {
-    console.log(event.target.value);
-    setType(event.target.value)
-    if(event.target.value == ""){
+  const filterByType = (value) => {
+    if(value == ""){
       setProducts(storeData.wholeCollection)
     }
     else{
-      setProducts(storeData.wholeCollection.filter((product) => product.type == event.target.value))
+      setProducts(storeData.wholeCollection.filter((product) => product.type == value))
     }
   }
 
-  const filterByGemstone = (event) => {
-    setGemstone(event.target.value)
-    if(event.target.value == ""){
+  const filterByGemstone = (value) => {
+    if(value == ""){
       setProducts(storeData.wholeCollection)
     }
     else{
-      setProducts(storeData.wholeCollection.filter((product) => product.gemstone == event.target.value))
+      setProducts(storeData.wholeCollection.filter((product) => product.gemstone == value))
     }
   }
 
-  const sortProducts = (event) => {
-    setSort(event.target.value)
-    console.log(event.target.value)
+  const sortProducts = (value) => {
+    setProducts(storeData.wholeCollection.sort((a,b) => 
+    (value === "lowest" ? ((a.price > b.price) ? 1:-1) : value === "highest" ? ((a.price < b.price) ? 1:-1) : "" )))
   }
 
     return (
@@ -58,9 +42,6 @@ function ProductsComp(props) {
         <div className="products">
           <Container>
             <FilterComp 
-              type={type}
-              gemstone={gemstone}
-              sort={sort}
               filterByType={filterByType}
               filterByGemstone={filterByGemstone}
               sortProducts={sortProducts}/>
