@@ -12,6 +12,7 @@ import AboutComp from "./About.js"
 import HeaderComp from "./Header"
 import FooterComp from "./Footer"
 import BasketComp from "./Basket"
+import ProductsByCategoryComp from "./ProductsByCategory"
 
 
 function HostComp() {
@@ -64,6 +65,7 @@ function HostComp() {
       <Routes>
         <Route path="/" element={<MainComp/>}/>
         <Route path="/products" element={<ProductsComp addToCart={addToCart} />}/>
+        <Route path="/products/:category" element={<ProductsByCategoryComp/>}/>
         <Route path="/product/:id" element={<ProductComp/>}/>
         <Route path="/about" element={<AboutComp/>}/>
         <Route path="/basket" element={<BasketComp/>}/>

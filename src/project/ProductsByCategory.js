@@ -1,27 +1,30 @@
 import { useEffect, useState } from "react"
-import { imgStorage, auth, db, app} from "./firebase"
-import { getFirestore, collection, query, where, getDocs, doc } from "firebase/firestore"
-import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage"
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 import ProductThumbnailComp from "./ProductThumbnail"
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import FilterComp from "./Filter"
+import { useParams } from "react-router-dom"
 import { observer } from "mobx-react"
 import { FilterStore } from './FilterStore'
 
-const ProductsComp = observer(() => {
+const ProductsByCategoryComp = observer(() =>  {
+
   const storeData = useSelector(state => state)
   const [products, setProducts] = useState([])
-  
-  //load products from redux
-  useEffect(() => {
-    setProducts(storeData.wholeCollection)
-  }, [storeData.wholeCollection])
+  const params = useParams()
+  let category = params.category
+
+  useEffect(() =>
+  {
+    async function getProducts()
+    {
+      let resp = await storeData.wholeCollection.filter((product) => product.type == category)
+      setProducts(resp)
+    }
+    getProducts()
+  },[category])
 
   const filterAndSort = () => {
-    let category = FilterStore.category
     let gemstone = FilterStore.gemstone
     let sort = FilterStore.sort
 
@@ -75,6 +78,7 @@ const ProductsComp = observer(() => {
     setProducts(pro)
    }
   }
+  
 
     return (
       <div className="App">
@@ -82,7 +86,7 @@ const ProductsComp = observer(() => {
           <Container>
             <FilterComp 
               filterAndSort={filterAndSort}
-              />
+              category={params.category}/>
           </Container>
           <Container className="products_container">
                 {
@@ -98,5 +102,4 @@ const ProductsComp = observer(() => {
       </div>
     );
 })
-
-export default ProductsComp;
+export default ProductsByCategoryComp;

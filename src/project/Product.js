@@ -12,20 +12,9 @@ import { CartStore } from './CartStore'
 
 function ProductComp() {
   const storeData = useSelector(state => state)
-  // const [product, setProduct] = useState({})
   const params = useParams()
   let id = params.id
   const product = storeData.wholeCollection.find((item) => item.id === id)
-
-  // useEffect(() =>
-  // {
-  //   async function getProduct()
-  //   {
-  //     let resp = await storeData.wholeCollection.find((item) => item.id === id)
-  //     setProduct(resp)
-  //   }
-  //   getProduct()
-  // },[id])
  
   const [openSpecs, setOpenSpecs] = useState(false)
   const toggleSpecs = () => {

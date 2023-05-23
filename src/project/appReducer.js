@@ -3,7 +3,11 @@ const appReducer = (state = {wholeCollection: []}, action) =>
     switch(action.type)
     {
         case "LOADCOLLECTION":
-            return {...state, wholeCollection: action.payload}
+            return {...state, wholeCollection: action.payload};
+        
+        case "UPDATECOLLECTION":
+            return {...state, wholeCollection: action.payload};
+            
         default:
             return state;
     }

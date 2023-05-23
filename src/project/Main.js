@@ -1,5 +1,4 @@
 import { useState } from "react"
-import ProductsComp from "./Products.js"
 import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap-grid.css'
 import Container from 'react-bootstrap/Container'
@@ -11,9 +10,12 @@ import purpleSet from '../img/photos/purple set.png'
 import purpleEarrings from '../img/photos/purple earrings.png'
 import ring from '../img/photos/ring.png'
 import pinkSet from '../img/photos/pinkset.png'
+import { observer } from "mobx-react"
+import { action } from "mobx"
+import { FilterStore } from './FilterStore'
 
 
-function MainComp() {
+const MainComp = observer(() =>  {
   
   const customSubmit = (e) =>
   {
@@ -21,6 +23,7 @@ function MainComp() {
   }
 
   const [userMessage, setUserMessage] = useState({name: '', mobile: '', message: ''})
+  const [categories, setCategories] = useState()
 
   return (
     <div className="App">
@@ -51,15 +54,15 @@ function MainComp() {
             <div className="shop_categories">
               <div className="shop_categories_item">
                 <div className="shop_categories_item_title">Sets</div>
-                <div className="shop_categories_item_img"><img src={purpleSet}></img></div>
+                <Link to="/products/sets" className="shop_categories_item_img"><img src={purpleSet}></img></Link>
               </div>
               <div className="shop_categories_item">
                 <div className="shop_categories_item_title">Earrings</div>
-                <div className="shop_categories_item_img"><img src={purpleEarrings}></img></div>
+                <Link to="/products/earrings" className="shop_categories_item_img"><img src={purpleEarrings}></img></Link>
               </div>
               <div className="shop_categories_item">
                 <div className="shop_categories_item_title">Rings</div>
-                <div className="shop_categories_item_img"><img src={ring}></img></div>
+                <Link to="/products/rings" className="shop_categories_item_img"><img src={ring}></img></Link>
               </div>
             </div>
           </Container>
@@ -88,5 +91,5 @@ function MainComp() {
       </div>
     </div>
   );
-}
+})
 export default MainComp;

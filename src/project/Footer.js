@@ -11,7 +11,7 @@ function FooterComp() {
             <div>
               <div className="footer_rights">
                 KrisDiam <br/>
-                All rights reserved, 2022
+                All rights reserved, 2023
               </div>
             </div>
             <div>
