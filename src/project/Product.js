@@ -31,7 +31,11 @@ function ProductComp() {
       <div className="main_wrapper">
         <section className="product">
           <Container>
-            <div className="product_nav"><Link to="/products">Fine Jewelry</Link></div>
+            <div className="product_nav">
+              <Link to="/products">Fine Jewelry</Link>
+              <span> / </span>
+              <Link  to={"/products/" + product.type}>{product.type}</Link>
+            </div>
             <Row>
               <Col lg={7}>
                 <div className="product_img">
