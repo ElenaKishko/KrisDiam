@@ -9,9 +9,11 @@ import Col from 'react-bootstrap/Col'
 import arrow from '../img/icons/arrow-down-2.svg'
 import { action } from "mobx"
 import { CartStore } from './CartStore'
+import { useDispatch } from "react-redux"
 
 function ProductComp() {
   const storeData = useSelector(state => state)
+  const dispatch = useDispatch()
   const params = useParams()
   let id = params.id
   const product = storeData.wholeCollection.find((item) => item.id === id)
@@ -47,7 +49,24 @@ function ProductComp() {
                   <div className="product_info_title">{product.name}</div>
                   <div className="product_info_price">{product.price}</div>
                   <div className="product_info_descr">Set is made from pink ruby stone and silver</div>
-                  <button className="product_info_btn" onClick={action(() => {CartStore.addToCart(product)})}>Add To Cart</button>
+                  {
+                    product.qty == 0 ? 
+                          <button className="product_info_btn" onClick={action(() =>{
+                          {dispatch({type:"INCREASEQTY", payload: product})}
+                          {CartStore.addToCart(product)}
+                          })}>Add To Cart</button> : 
+                          <div className="product_info_btn_qty">
+                            <button  onClick={action(() =>{
+                                              {dispatch({type:"DECREASEQTY", payload: product})}
+                                              {CartStore.removeFromCart(product)}
+                                              })}> - </button>
+                            <button >{product.qty}</button>
+                            <button  onClick={action(() =>{
+                                              {dispatch({type:"INCREASEQTY", payload: product})}
+                                              {CartStore.addToCart(product)}
+                                              })}> + </button>
+                          </div>
+                  }
                   <div className="product_info_divider"></div>
                   <div className="product_info_specsAndShipping">
                     <div className='product_info_wrapper'>

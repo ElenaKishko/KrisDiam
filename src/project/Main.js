@@ -13,6 +13,7 @@ import pinkSet from '../img/photos/pinkset.png'
 import { observer } from "mobx-react"
 import { action } from "mobx"
 import { FilterStore } from './FilterStore'
+import { ContactMeComp } from "./ContactMe"
 
 
 const MainComp = observer(() =>  {
@@ -67,26 +68,8 @@ const MainComp = observer(() =>  {
             </div>
           </Container>
         </section>
-        <section className="contact">
-          <Container>
-            <Row className="contact_wrapper">
-              <Col className="contact_img"><img src={pinkSet}></img></Col>
-              <Col className="contact_descr">
-                <div className="contact_descr_title">Contact me for individual order</div>
-                <div className="contact_descr_text">For any question, individual design 
-                  or suggestion please fill the form, and I will message you back as 
-                  soon as possible.</div>
-              </Col>
-              <Col className="contact_form">
-                <form onSubmit={e => customSubmit(e)}>
-                  <input type="text" placeholder="Your name"/>
-                  <input type="text" placeholder="Your mobile number"/>
-                  <textarea type="text" placeholder="Message"/>
-                  <input type="submit" value="Submit" />
-                </form>
-              </Col>
-            </Row>
-          </Container>
+        <section>
+          <ContactMeComp/>
         </section>
       </div>
     </div>

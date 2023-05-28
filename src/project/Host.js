@@ -34,29 +34,12 @@ function HostComp() {
                 price: doc.data().price,
                 type: doc.data().type,
                 gemstone: doc.data().gemstone,
-                url: doc.data().url
+                url: doc.data().url,
+                qty:0
       };
       wholeCollection.push(obj)
     })
     dispatch({type:"LOADCOLLECTION", payload: wholeCollection})
-  }
-
-  //Cart add/remove
-  const [cartItems, setCartItems] = useState([])
-  const addToCart = async (product) =>
-  {
-    console.log(product.id)
-    const exist = cartItems.find((x) => x.id === product.id)
-    if(exist){
-      const newCartItems = cartItems.map((x) =>
-      x.id === product.id ? {...exist,qty: exist.qty +1} : x
-      )
-      setCartItems(newCartItems)
-    }
-  }
-  const removeFromCart = async () =>
-  {
-    
   }
 
   return (
@@ -64,7 +47,7 @@ function HostComp() {
       <HeaderComp/>
       <Routes>
         <Route path="/" element={<MainComp/>}/>
-        <Route path="/products" element={<ProductsComp addToCart={addToCart} />}/>
+        <Route path="/products" element={<ProductsComp />}/>
         <Route path="/products/:category" element={<ProductsByCategoryComp/>}/>
         <Route path="/product/:id" element={<ProductComp/>}/>
         <Route path="/about" element={<AboutComp/>}/>
