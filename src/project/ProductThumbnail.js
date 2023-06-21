@@ -8,7 +8,6 @@ function ProductThumbnailComp(props) {
     const storeData = useSelector(state => state)
     const {product} = props
     return (
-      <div className="App">
           <div className='thumbnail_bg'>
             <Link to={"/product/" + product.id} state={{product}}><img className='thumbnail_img' src={product.url}/></Link>   
             <div className="thumbnail_descr">
@@ -18,7 +17,6 @@ function ProductThumbnailComp(props) {
             </div> 
             {/* <button className="product_info_btn" onClick={action(() => {CartStore.addToCart(product)})}>Add To Cart</button> */}
           </div>
-      </div>
     );
 }
 export default ProductThumbnailComp;

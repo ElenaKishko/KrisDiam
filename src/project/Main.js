@@ -27,7 +27,6 @@ const MainComp = observer(() =>  {
   const [categories, setCategories] = useState()
 
   return (
-    <div className="App">
       <div className="main_wrapper">
         <section className="explore">
           <Container>
@@ -72,7 +71,6 @@ const MainComp = observer(() =>  {
           <ContactMeComp/>
         </section>
       </div>
-    </div>
   );
 })
 export default MainComp;

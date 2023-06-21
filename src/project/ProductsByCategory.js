@@ -11,6 +11,8 @@ const ProductsByCategoryComp = observer(() =>  {
 
   const storeData = useSelector(state => state)
   const [products, setProducts] = useState([])
+  const [overlay, setOverlay] = useState(false)
+
   const params = useParams()
   let category = params.category
 
@@ -81,12 +83,14 @@ const ProductsByCategoryComp = observer(() =>  {
   
 
     return (
-      <div className="App">
+      <>
+        <div className={overlay ? "overlay" : ""}></div>
         <div className="products">
           <Container>
             <FilterComp 
               filterAndSort={filterAndSort}
-              category={params.category}/>
+              category={params.category}
+              setOverlay={setOverlay}/>
           </Container>
           <Container className="products_container">
                 {
@@ -99,7 +103,7 @@ const ProductsByCategoryComp = observer(() =>  {
                 }
           </Container>
         </div>
-      </div>
+      </>
     );
 })
 export default ProductsByCategoryComp;

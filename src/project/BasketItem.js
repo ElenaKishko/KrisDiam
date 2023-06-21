@@ -11,7 +11,6 @@ function BasketItemComp(props) {
   const product = storeData.wholeCollection.find((item) => item.id === props.product.id)
 
   return (
-    <div className="App">
       <section className="basket_item">
         <Link to={"/product/" + product.id}  state={{product}} className="basket_item_img"><img src={product.url} alt={product.name}/></Link>
         <div className="basket_item_info">
@@ -35,7 +34,6 @@ function BasketItemComp(props) {
         </div>
         <div className='basket_item_remove'><button onClick={action(() => {CartStore.deleteFromCart(product)})}>X</button></div>
       </section>
-    </div>
   );
 }
 export default BasketItemComp;

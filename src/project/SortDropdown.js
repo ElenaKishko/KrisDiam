@@ -1,12 +1,25 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 function SortDropdownComp({selectedSort, setSelectedSort,handleFilterAndSort}){
     const[isActive, setIsActive] = useState(false)
+    let dropdownRef =  useRef()
+    //fuction to close the dropdown when clicking outside of it
+    useEffect(() =>{
+        let handler = (e) => {
+            if(!dropdownRef.current.contains(e.target)){
+                setIsActive(false)
+            }
+        }
+        document.addEventListener("mousedown", handler)
+        return() => {
+            document.removeEventListener("mousedown", handler)
+        }
+    })
     const options = [{value:"lowest", text: "Price, low to high"}, 
                      {value:"highest", text:"Price, high to low"} ]
     return(
-        <div className="dropdown">
-            <div className="dropdown_btn" onClick={() => setIsActive(!isActive)}>
+        <div className="dropdown dropdown_sort" ref={dropdownRef}>
+            <div className="dropdown_btn dropdown_btn_sort" onClick={() => setIsActive(!isActive)}>
                 {selectedSort}
                 <span className="fas fa-caret-down"></span>
             </div>

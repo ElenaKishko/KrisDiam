@@ -4,12 +4,12 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import BasketItemComp from "./BasketItem"
-import visa from "../img/icons/visa.svg"
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js"
 
 const BasketComp = observer(() => {
     console.log(CartStore.cartItems);
     return (
-        <div className="App">
+        <>
             <div className="main_wrapper">
                 <Container>
                     <div className="basket">
@@ -32,39 +32,30 @@ const BasketComp = observer(() => {
                             <Col lg={{span: 4, offset: 1}}>
                                 <section classname="basket_payment">
                                     <div className="basket_payment_header">How you'll pay</div>
-                                
-                                    <form className="credit-card">
-                                        <div className="front">
-                                            <div className="card-data-row">
-                                                <div className="brand-name">Leumi</div>
-                                                <img src={visa} className="logo" />
-                                            </div>
-                                            <fieldset className="form-group">
-                                                <legend>Card Number</legend>
-                                                <label htmlFor="cc-1">Card Number</label>
-                                                <div className="cc-inputs">
-                                                    <input type="tel" maxLength="4" aria-label="Credit Card First 3 Digits" id="cc-1" required pattern="[0-9]{4}"/>
-                                                    <input type="tel" maxLength="4" aria-label="Credit Card Second 3 Digits" required pattern="[0-9]{4}"/>
-                                                    <input type="tel" maxLength="4" aria-label="Credit Card Third 3 Digits" required pattern="[0-9]{4}"/>
-                                                    <input type="tel" maxLength="4" aria-label="Credit Card Last 3 Digits" required pattern="[0-9]{4}"/>
-                                                </div>
-                                            </fieldset>
-                                            <div className="input-row">
-                                                <div className="form-group name-group">
-                                                    <div htmlFor="name">Name</div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="basket_credit_card_back"></div>
-                                    </form>
+                                <PayPalScriptProvider options={{
+                                    "client-id":
+                                     "AWPxbKx-hEXsS_sP92l9b_EmmGLLuLBzfe9UR0-W8rZ4KkNeSfaLlpLOMiz5aJZLBF_hVs7yfnBqbcYz"}}>
+                                    <PayPalButtons 
+                                    createOrder={(data, actions) => {
+                                        return actions.order.create({
+                                            purchase_units:[
+                                                {
+                                                    amount: {
+                                                        value: CartStore.subTotalCounter,
+                                                        currency: "ILS",
+                                                    }
+                                                }
+                                            ]
+                                        })
+                                    }}/>
+                                </PayPalScriptProvider>
                                 </section>
                             </Col>
                         </Row>
                     </div>
                 </Container>
             </div>
-        </div>
+        </>
     )  
 })
 export default BasketComp

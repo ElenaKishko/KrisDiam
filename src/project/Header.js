@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react"
 import {Link} from 'react-router-dom'
 import { observer } from "mobx-react"
 import { CartStore } from './CartStore'
@@ -7,9 +8,7 @@ import search from '../img/icons/search.svg'
 import profile from '../img/icons/profile.svg'
 import basket from '../img/icons/basket.svg'
 import { useSelector } from "react-redux"
-import { useState } from 'react'
-
-
+import * as FeatherIcons from "react-icons/fi"
 import 'bootstrap/dist/css/bootstrap-grid.css'
 import Container from 'react-bootstrap/Container'
 
@@ -17,6 +16,20 @@ const HeaderComp = observer( () =>{
   const storeData = useSelector(state => state)
   let categories = [...new Set(storeData.wholeCollection.map((product) => product.type))]
   const[isActive, setIsActive] = useState(false)
+  let dropdownClose =  useRef()
+  //fuction to close the dropdown when clicking outside of it
+  useEffect(() =>{
+      let handler = (e) => {
+          if(!dropdownClose.current.contains(e.target)){
+              setIsActive(false)
+          }
+      }
+      document.addEventListener("mousedown", handler)
+      return() => {
+          document.removeEventListener("mousedown", handler)
+      }
+  })
+  //dynamic dropdown loading
   let shopList = categories.length > 0 
   && categories.map((item, i) => {
       return(
@@ -25,9 +38,8 @@ const HeaderComp = observer( () =>{
   })
 
   return (
-    <div className="App">
       <header className='header'>
-        <Container>
+        <Container  className='container-xxl container-xl container-lg container-md container-sm'>
           <div className="wrapper">
             <div>
               <div className="header_logo">
@@ -39,13 +51,13 @@ const HeaderComp = observer( () =>{
                   <ul className="header_menu">
                     <li className="header_menu_item"><Link className="header_menu_link" to='/'>Home</Link></li>
                     <li className="header_menu_item">
-                      <div className="header_dropdown" onClick={() => setIsActive(!isActive)}>
+                      <div  className="header_dropdown"  onClick={() => setIsActive(!isActive)}>
                         <span>Shop</span>
                         <div className="header_dropdown_btn">
-                          <span className="fas fa-caret-down"></span>
+                          <FeatherIcons.FiChevronDown/>
                         </div>
                         {isActive && (
-                            <div className="header_dropdown_content">
+                            <div className="header_dropdown_content"  ref={dropdownClose}>
                                 <div className="header_dropdown_item" onClick={() => setIsActive(false)}><Link to="/products">Everything</Link></div>
                                 {shopList}
                             </div>
@@ -66,50 +78,8 @@ const HeaderComp = observer( () =>{
           </div>
         </Container>
       </header>
-    </div>
   );
   
 }
 )
 export default HeaderComp;
-
-
-
-
-// .dropdown
-//     width: 200px
-//     user-select: none
-//     position: relative
-//     &_btn
-//         padding: 15px 20px  
-//         background: #fff
-//         box-shadow: 3px 3px 5px 3px rgba(0,0,0,0.03)
-//         font-weight: bold
-//         color: $text_color
-//         display: flex
-//         align-items: center
-//         justify-content: space-between
-//         border-radius: 4px
-//         text-transform: capitalize
-//         letter-spacing: 0.02em
-//     &_content
-//         position: absolute
-//         top: 110%
-//         left: 0
-//         width: 100%
-//         padding: 10px
-//         background: rgba(171,14,102, 0.7)
-//         box-shadow: 3px 3px 10px 6px rgba(0,0,0,0.06)
-//         font-weight: 500
-//         color: $white_color
-//         z-index: 1
-//         border-radius: 4px
-//     &_item
-//         padding: 10px
-//         transition: all 0.2s
-//         text-transform: capitalize
-//         letter-spacing: 0.08em
-//         &:hover
-//             background: rgba(171,14,102, 0.9)
-//             border-radius: 4px
-    

@@ -1,7 +1,7 @@
 import { Route, Routes} from "react-router-dom"
 import { useEffect, useState } from "react"
 import { imgStorage, auth, db, app} from "./firebase"
-import { getFirestore, collection, query, where, getDocs, doc } from "firebase/firestore"
+import { getFirestore, collection, query, where, getDocs, doc,setDoc } from "firebase/firestore"
 import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage"
 import { useDispatch } from "react-redux"
 
@@ -25,8 +25,7 @@ function HostComp() {
 
   const getCollection = async () =>
   {
-    let q = query(collection(db, "KrisDiam"))
-    const querySnapshot = await getDocs(q)
+    const querySnapshot = await getDocs(query(collection(db, "KrisDiam")))
     querySnapshot.forEach((doc) => {
       let obj = {
                 id: doc.id,
@@ -35,15 +34,17 @@ function HostComp() {
                 type: doc.data().type,
                 gemstone: doc.data().gemstone,
                 url: doc.data().url,
-                qty:0
+                qty:0,
+                specs: doc.data().specs
       };
       wholeCollection.push(obj)
     })
     dispatch({type:"LOADCOLLECTION", payload: wholeCollection})
   }
+  
 
   return (
-    <div className="App">
+    <>
       <HeaderComp/>
       <Routes>
         <Route path="/" element={<MainComp/>}/>
@@ -54,7 +55,7 @@ function HostComp() {
         <Route path="/basket" element={<BasketComp/>}/>
       </Routes>
       <FooterComp/>
-    </div>
+    </>
   );
 }
 export default HostComp;

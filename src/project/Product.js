@@ -29,10 +29,10 @@ function ProductComp() {
   }
 
   return (
-    <div className="App">
+    <>
       <div className="main_wrapper">
         <section className="product">
-          <Container>
+          <Container className='container-xxl container-xl container-lg container-md container-sm'>
             <div className="product_nav">
               <Link to="/products">Fine Jewelry</Link>
               <span> / </span>
@@ -47,7 +47,7 @@ function ProductComp() {
               <Col lg={{span: 4, offset: 1}}>
                 <div className="product_info">
                   <div className="product_info_title">{product.name}</div>
-                  <div className="product_info_price">{product.price}</div>
+                  <div className="product_info_price">{product.price} nis</div>
                   <div className="product_info_descr">Set is made from pink ruby stone and silver</div>
                   {
                     product.qty == 0 ? 
@@ -56,36 +56,36 @@ function ProductComp() {
                           {CartStore.addToCart(product)}
                           })}>Add To Cart</button> : 
                           <div className="product_info_btn_qty">
-                            <button  onClick={action(() =>{
+                            <button onClick={action(() =>{
                                               {dispatch({type:"DECREASEQTY", payload: product})}
                                               {CartStore.removeFromCart(product)}
                                               })}> - </button>
                             <button >{product.qty}</button>
-                            <button  onClick={action(() =>{
+                            <button onClick={action(() =>{
                                               {dispatch({type:"INCREASEQTY", payload: product})}
                                               {CartStore.addToCart(product)}
                                               })}> + </button>
                           </div>
                   }
                   <div className="product_info_divider"></div>
+                  
                   <div className="product_info_specsAndShipping">
                     <div className='product_info_wrapper'>
                       <div className='product_info_title'>Specifications</div>
                       <button className={openSpecs ? 'product_info_arrow_active' : 'product_info_arrow'} onClick={toggleSpecs}><img src={arrow} alt='arrow'/></button>
                     </div>
+                    <ul className="product_info_specs">
                     {
-                      openSpecs && (
-                        <ul>
-                          <li>Made from sterling silver</li>
-                          <li>pendant size: 25mm</li>
-                          <li>earring size: 30mm</li>
-                          <li>Chain adjustable in three lengths: 41-43-45cm</li>
-                        </ul>
+                      openSpecs && product.specs && (
+                          product.specs.map((item) => {
+                            return <li className="product_info_specs_item" key={item}>{item}</li>
+                          })
                       )
                     }
+                    </ul>
                   </div>
                   <div className="product_info_divider"></div>
-                  <div className="product_info_specsAndShipping">
+                  {/* <div className="product_info_specsAndShipping">
                     <div className='product_info_wrapper'>
                       <div className='product_info_title'>Shipping and Returns</div>
                       <button className={openShipping ? 'product_info_arrow_active' : 'product_info_arrow'} onClick={toggleShipping}><img src={arrow} alt='arrow'/></button>
@@ -101,14 +101,14 @@ function ProductComp() {
                       )
                     }
                   </div>
-                  <div className="product_info_divider"></div>
+                  <div className="product_info_divider"></div> */}
                 </div>
               </Col>
             </Row>
           </Container>
         </section>
       </div>
-    </div>
+    </>
   );
 }
 export default ProductComp;

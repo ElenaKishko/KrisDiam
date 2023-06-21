@@ -4,7 +4,6 @@ import logo from '../img/icons/logo.svg'
 
 function FooterComp() {
   return (
-    <div className="App">
       <footer>
         <Container className="footer">
           <div className="footer_wrapper">
@@ -26,7 +25,6 @@ function FooterComp() {
           </div>
         </Container>
       </footer>
-    </div>
   );
 }
 export default FooterComp;

@@ -14,6 +14,7 @@ import { FilterStore } from './FilterStore'
 const ProductsComp = observer(() => {
   const storeData = useSelector(state => state)
   const [products, setProducts] = useState([])
+  const [overlay, setOverlay] = useState(false)
   
   //load products from redux
   useEffect(() => {
@@ -77,25 +78,26 @@ const ProductsComp = observer(() => {
   }
 
     return (
-      <div className="App">
-        <div className="products">
-          <Container>
-            <FilterComp 
-              filterAndSort={filterAndSort}
-              />
-          </Container>
-          <Container className="products_container">
-                {
-                  products.map(item =>
-                    {
-                      return <div key={item.id}>
-                          <ProductThumbnailComp key={item.id} product={item}/>
-                      </div>
-                    })
-                }
-          </Container>
-        </div>
+      <>
+      <div className={overlay ? "overlay" : ""}></div>
+      <div className="products">
+        <Container className='container-xxl container-xl container-lg container-md container-sm'>
+          <FilterComp 
+            filterAndSort={filterAndSort} setOverlay={setOverlay}
+            />
+        </Container>
+        <Container className="products_container container-xxl container-xl container-lg container-md container-sm">
+              {
+                products.map(item =>
+                  {
+                    return <div key={item.id}>
+                        <ProductThumbnailComp key={item.id} product={item}/>
+                    </div>
+                  })
+              }
+        </Container>
       </div>
+      </>
     );
 })
 
