@@ -1,11 +1,10 @@
-import './css/App.css'
-import HostComp from './project/Host'
-
+import "./css/App.css";
+import Host from "./project/Host";
 
 function App() {
   return (
     <div className="App">
-      <HostComp/>
+      <Host />
     </div>
   );
 }
