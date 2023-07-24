@@ -19,13 +19,25 @@
     background-image: linear-gradient(to top, $accent_color 0%, $icons_color 100%)
     border: none  
     border-radius: 4px
+    outline: none
+    &:focus
+        outline: none
 =btn_hover
     &:hover
         background-image: none
         background-color: $icons_color
+=btn_focus
+    &:focus
+        outline: none
 =footer_text
     font-size: 14px
     font-weight: 300
     line-height: 19px
     letter-spacing: 0.04em
     color: $text_color
+=make-container($padding-x: $container-padding-x) 
+  width: 100%
+  padding-right: $padding-x
+  padding-left: $padding-x
+  margin-right: auto
+  margin-left: auto
