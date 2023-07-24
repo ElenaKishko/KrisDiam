@@ -1,13 +1,8 @@
-import FooterComp from "./Footer"
-import HeaderComp from "./Header"
-
-function AboutComp() {
+function About() {
   return (
-    <>      
-      <div className="main_wrapper">
-        <HeaderComp/>
-      </div>
+    <>
+      <div className="main_wrapper"></div>
     </>
   );
 }
-export default AboutComp;
+export default About;

@@ -1,22 +1,21 @@
-import {Link} from 'react-router-dom'
-import {useSelector} from 'react-redux'
-import 'bootstrap/dist/css/bootstrap-grid.css'
-import { action } from "mobx"
-import { CartStore } from './CartStore'
+import { Link } from "react-router-dom";
+import { Card, CardContent, CardHeader, CardMedia } from "@mui/material";
 
-function ProductThumbnailComp(props) {
-    const storeData = useSelector(state => state)
-    const {product} = props
-    return (
-          <div className='thumbnail_bg'>
-            <Link to={"/product/" + product.id} state={{product}}><img className='thumbnail_img' src={product.url}/></Link>   
-            <div className="thumbnail_descr">
-              <div className="thumbnail_descr_name">{product.name}</div>
-              <div className="thumbnail_descr_price">{product.price} nis</div>
-
-            </div> 
-            {/* <button className="product_info_btn" onClick={action(() => {CartStore.addToCart(product)})}>Add To Cart</button> */}
-          </div>
-    );
+function ProductThumbnail(props) {
+  const { product } = props;
+  return (
+    <Card className="thumbnail" sx={{ boxShadow: 0 }}>
+      <Link to={"/product/" + product.id} state={{ product }}>
+        <CardMedia className="thumbnail_img" image={product.url} />
+      </Link>
+      <CardContent sx={{ p: 0 }} className="thumbnail_descr">
+        <CardHeader
+          sx={{ p: 0 }}
+          title={product.name}
+          subheader={product.price + " nis"}
+        />
+      </CardContent>
+    </Card>
+  );
 }
-export default ProductThumbnailComp;
+export default ProductThumbnail;
