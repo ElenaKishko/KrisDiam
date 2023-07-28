@@ -1,9 +1,0 @@
-export { default as logo } from "../img/icons/logo.svg";
-export { default as basket } from "../img/icons/basket.svg";
-export { default as mainMobile } from "../img/photos/main_img_mobile.jpeg";
-export { default as shopEarrings } from "../img/photos/shopEarrings.jpg";
-export { default as shopPendants } from "../img/photos/shopPendants.jpg";
-export { default as shopSets } from "../img/photos/shopSets.jpg";
-export { default as shopRings } from "../img/photos/shopRings.jpg";
-export { default as shopIndividual } from "../img/photos/shopIndividual.jpg";
-export { default as main } from "../img/photos/main.jpg";
