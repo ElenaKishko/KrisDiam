@@ -44,7 +44,7 @@ function Host() {
         gemstone: doc.data().gemstone,
         description: doc.data().description,
         url: doc.data().url,
-        qty: 0,
+        qty: doc.data().qty,
         specs: doc.data().specs,
       };
       wholeCollection.push(obj);

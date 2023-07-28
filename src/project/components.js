@@ -17,5 +17,4 @@ export { default as ProductThumbnail } from "./ProductThumbnail";
 export { default as SortDropdown } from "./SortDropdown";
 export { default as SortDropdownMobile } from "./SortDropdownMobile";
 export { default as AdminMain } from "./AdminMain";
-export { default as ProductCardAdmin } from "./ProductCardAdmin";
 export { default as EditProduct } from "./EditProduct";
