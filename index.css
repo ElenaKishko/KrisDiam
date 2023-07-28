@@ -1,0 +1,30 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Atlas Grotesk';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: 'Atlas Grotesk';
+}
+
+/* @font-face{
+  font-family: 'Atlas Grotesk';
+  src: local('AtlasGrotesk-thin'), url('../fonts/ATLASGROTESK-THIN.OTF') format('otf');
+}
+@font-face{
+  font-family: 'Atlas Grotesk';
+  src: local('AtlasGrotesk-light'), url('../fonts/ATLASGROTESK-LIGHT.OTF') format('otf');
+}
+@font-face{
+  font-family: 'Atlas Grotesk';
+  src: local('AtlasGrotesk-regular'), url('../fonts/ATLASGROTESK-REGULAR.OTF') format('otf');
+}
+@font-face{
+  font-family: 'Atlas Grotesk';
+  src: local('AtlasGrotesk-medium'), url('../fonts/ATLASGROTESK-MEDIUM.OTF') format('otf');
+}
+@font-face{
+  font-family: 'Atlas Grotesk';
+  src: local('AtlasGrotesk-black'), url('../fonts/ATLASGROTESK-BLACK.OTF') format('otf');
+} */
