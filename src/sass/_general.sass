@@ -725,8 +725,71 @@ footer
 .menu-secondary-exit-active
     transform: translateX(110%)ia
     transition: all var(--speed) ease
+    
 .admin
-    padding-top: 150px
+    &_form
+        padding-top: 110px
+        h3
+            text-align: center
+            color: $text_color
+            text-transform: capitalize
+        h4
+            color: $text_color
+            text-transform: capitalize
+            padding-left: 10px
+    &_products
+        h3
+            text-align: center
+            color: $text_color
+            text-transform: capitalize
+            padding-top: 30px
+        thead
+            tr
+                th  
+                    font-weight: bold
+                    padding: 10px
+        tbody
+            tr 
+                td
+                    padding: 10px
+    &_mainInfoWrap
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-between
+        border-bottom: 1px dotted grey
+        padding-bottom: 20px
+    &_specsWrap
+        display: flex
+        border-bottom: 1px dotted grey
+        padding-bottom: 20px
+        flex-wrap: wrap
+    &_photosWrap
+        border-top: 1px dotted grey
+        padding: 20px 0 20px 0
+        h4
+            margin-bottom: 0
+    &_photos
+        display: flex
+        flex-wrap: wrap
+    &_photo
+        display: flex
+        flex-direction: column
+        margin: 0 10px 0 8px
+        img
+            margin-bottom: 10px
+        &_upload
+            display: flex
+            flex-wrap: wrap
+            button
+                margin-top: 8px
+    &_specs
+        display: flex
+        flex-wrap: wrap
+    &_spec
+        display: flex
+        margin-right: 10px
+        align-items: center
+
 @media (max-width: $breakpoint_lg) // <992px
     .basket
         justify-content: start
