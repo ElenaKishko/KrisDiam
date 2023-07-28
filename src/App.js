@@ -1,5 +1,5 @@
 import "./css/App.css";
-import Host from "./project/Host";
+import { Host } from "./project/components";
 
 function App() {
   return (
