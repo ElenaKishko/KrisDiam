@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { collection, doc, setDoc, updateDoc } from "firebase/firestore";
 import { storage, db } from "./stores";
@@ -75,6 +75,7 @@ const EditProduct = () => {
       type: updatedProduct.type,
       specs: updatedProduct.specs,
       url: updatedProduct.url,
+      qty: updatedProduct.qty,
     }).then(() => {
       alert("Product was successfully updated");
     });
@@ -162,6 +163,7 @@ const EditProduct = () => {
                 sx={{ m: 1 }}
                 type="number"
                 name="qty"
+                value={updatedProduct.qty}
                 onChange={(e) =>
                   setUpdatedProduct({
                     ...updatedProduct,
@@ -257,6 +259,21 @@ const EditProduct = () => {
               >
                 Update Product
               </Button>
+
+              <Link to="/admin">
+                <Button
+                  className="admin_back"
+                  variant="contained"
+                  sx={{
+                    m: 1,
+                    display: "block",
+                    m: "auto",
+                    marginBottom: 5,
+                  }}
+                >
+                  back to admin page
+                </Button>
+              </Link>
             </div>
           </div>
         </Container>

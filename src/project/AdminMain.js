@@ -13,9 +13,14 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
 import { storage, db } from "./stores";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  getStorage,
+  deleteObject,
+} from "firebase/storage";
 import {
   collection,
   doc,
@@ -26,6 +31,7 @@ import {
 } from "firebase/firestore";
 import { v4 } from "uuid"; //generator of unique sequence for names of uploaded photos
 import * as Icons from "react-icons/ci";
+import { VscErrorSmall } from "react-icons/vsc";
 
 const AdminMain = () => {
   const storeData = useSelector((state) => state);
@@ -63,7 +69,7 @@ const AdminMain = () => {
   };
 
   //save product photo urls in array photosArr and then in object updatedProduct
-  const hadlePhotosInput = () => {
+  const hadlePhotosInput = async () => {
     if (newPhoto == "") return;
     let newPhotoCopy = newPhoto;
 
@@ -71,7 +77,7 @@ const AdminMain = () => {
     const imageRef = ref(storage, `${newProduct.name}/${newPhoto.name + v4()}`);
 
     //get and save url of uploaded photo
-    uploadBytes(imageRef, newPhoto).then((snaphsot) => {
+    await uploadBytes(imageRef, newPhoto).then((snaphsot) => {
       getDownloadURL(snaphsot.ref).then((url) => {
         newPhotoCopy = url;
       });
@@ -119,21 +125,44 @@ const AdminMain = () => {
       document.querySelector('[name="description"]').value = "";
       document.querySelector('[name="gemstone"]').value = "";
       document.querySelector('[name="type"]').value = "";
-      document.querySelector('[name="photo_0"]').value = "";
-      document.querySelector('[name="qty"]').value = 0;
+      document.querySelector('[name="new_photo"]').value = "";
+      document.querySelector('[name="qty"]').value = "";
       setSpecsArr([""]);
       setPhotosArr([""]);
       setNewProduct({ ...initialState });
     });
   };
-  //remove product form database
+  //delete product and photos form database
   const deleteProduct = async (id) => {
     const docRef = doc(collectionRef, id);
+    const product = await storeData.wholeCollection.find(
+      (item) => item.id === id
+    );
+    const folderName = product.name;
+    const photos = product.url;
 
+    //delete photos and their folder form firebase storage
+    const storage = getStorage();
+    photos.map((photo) => {
+      const splitSegments = photo.split("%2F");
+      const lastSegment = splitSegments[splitSegments.length - 1];
+      const photoName = lastSegment.split("?")[0];
+      console.log(photoName);
+      const photoRef = ref(storage, `${folderName}/${photoName}`);
+      deleteObject(photoRef)
+        .then(() => {
+          console.log("photos folder was deleted successfully");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    });
+
+    //delete product(document) from firestore database
     await deleteDoc(docRef)
       .then(() => {
         // setProducts(storeData.wholeCollection);
-        console.log(storeData.wholeCollection);
+        alert("product was deleted successfully");
       })
       .catch((error) => {
         console.log(error);
@@ -336,7 +365,7 @@ const AdminMain = () => {
                     <TableCell>{product.qty}</TableCell>
                     <TableCell>
                       <Link
-                        to={"/admin/product/" + product.id}
+                        to={"/kris/product/" + product.id}
                         state={{ product }}
                       >
                         <Button variant="outlined">

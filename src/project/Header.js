@@ -97,7 +97,8 @@ const Header = observer(() => {
               {/* <a href="#"><img src={search} alt="search"/></a> */}
               {/* <a href="#"><img src={profile} alt="profile"/></a> */}
               <Link to="/basket" className="header_icons_basket">
-                <img src={basket} alt="basket" />
+                {/* <img src={basket} alt="basket" /> */}
+                <Icons.FiShoppingCart />
                 <span>{CartStore.cartCounter}</span>
               </Link>
             </div>

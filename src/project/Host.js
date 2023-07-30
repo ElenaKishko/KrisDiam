@@ -62,8 +62,8 @@ function Host() {
         <Route path="/product/:id" element={<Product />} />
         <Route path="/about" element={<About />} />
         <Route path="/basket" element={<Basket />} />
-        <Route path="/admin" element={<AdminMain />} />
-        <Route path="/admin/product/:id" element={<EditProduct />} />
+        <Route path="/kris" element={<AdminMain />} />
+        <Route path="/kris/product/:id" element={<EditProduct />} />
       </Routes>
       <Footer />
     </>
