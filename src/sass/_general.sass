@@ -63,6 +63,10 @@ select
                 color: $text_color
             img
                 width: 22px
+            svg
+                height: 24px
+                width: 30px
+                color: $accent_color
     &_menu
         list-style: none
         justify-content: center
@@ -87,7 +91,7 @@ select
         &_content
             position: absolute
             top: 77%
-            background: rgba(171,14,102, 0.8)
+            background: $dropdown_1
             border-radius: 4px
             padding: 5px
             animation: dropdown-open 0.6s forwards
@@ -108,7 +112,7 @@ select
             font-size: 16px
             &:hover
                 color: $white_color
-                background-color: rgba(171,14,102, 0.9)
+                background-color: $dropdown_2
                 border-radius: 4px
             a
                 color: $white_color
@@ -365,6 +369,7 @@ footer
                 height: 50px
                 button
                     width: 33%
+                    
                     +btn
                     +btn_hover
                     &:nth-child(2)
@@ -524,7 +529,7 @@ footer
     left: 50%
     margin-left: -50vw
     justify-content: space-evenly
-    background: rgba(171, 14, 102, 0.7)
+    background: $background_1
     color: $white_color
     padding: 10px
     letter-spacing: 0.04em
@@ -580,7 +585,7 @@ footer
         left: 0
         width: 100%
         padding: 10px
-        background: rgba(171,14,102, 0.7)
+        background: $background_1
         box-shadow: 3px 3px 10px 6px rgba(0,0,0,0.06)
         font-weight: 500
         color: $white_color
@@ -592,7 +597,7 @@ footer
         text-transform: capitalize
         letter-spacing: 0.08em
         &:hover
-            background: rgba(171,14,102, 0.9)
+            background: $background_1
             border-radius: 4px
     &_mobile
         text-transform: uppercase
@@ -648,7 +653,7 @@ footer
         width: calc( 100% - 40px )
         padding: 9px 10px
         margin: 16px auto
-        background-image: linear-gradient(to top, #AB0E66 0%, #D4749A 100%)
+        background-image: linear-gradient(to top, $button_color_1 0%, $button_color_2 100%)
         font-weight: normal
         color: $white_color
         border: none  
@@ -804,6 +809,9 @@ footer
             &_basket
                 img
                     width: 16px
+                svg
+                    height: 15px
+                    width: 20px
     .explore
         min-height: 0
         margin-bottom: 30px
@@ -926,6 +934,7 @@ footer
                     margin: 0 auto
                     margin-top: 20px
                     width: 200px
+                    margin-bottom: 20px
                     button
                         height: 50px
                         
@@ -938,7 +947,7 @@ footer
         .footer
             &_logo
                 img 
-                    width: 100px          
+                    width: 70px          
     .basket
         justify-content: start
         &_container
@@ -968,7 +977,7 @@ footer
             text-transform: capitalize
             padding: 2px 8px
             &_selected
-                background-color: rgba(171,14,102, 0.9)
+                background-color: $background_1
                 text-transform: capitalize
                 border-radius: 4px
                 margin: 3px
@@ -1077,7 +1086,7 @@ footer
 //             text-transform: capitalize
 //             padding: 2px 8px
 //             &_selected
-//                 background-color: rgba(171,14,102, 0.9)
+//                 background-color: $background_1
 //                 text-transform: capitalize
 //                 border-radius: 4px
 //                 margin: 3px
