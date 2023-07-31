@@ -35,6 +35,7 @@ function Host() {
 
   const getCollection = async () => {
     const querySnapshot = await getDocs(query(collection(db, "KrisDiam")));
+    console.log(querySnapshot);
     querySnapshot.forEach((doc) => {
       let obj = {
         id: doc.id,
@@ -46,6 +47,7 @@ function Host() {
         url: doc.data().url,
         qty: doc.data().qty,
         specs: doc.data().specs,
+        cartQty: doc.data().cartQty,
       };
       wholeCollection.push(obj);
     });

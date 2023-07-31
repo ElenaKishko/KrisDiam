@@ -27,6 +27,7 @@ const EditProduct = () => {
     specs: product.specs,
     url: product.url,
     qty: product.qty,
+    cartQty: product.cartQty,
   };
   const [updatedProduct, setUpdatedProduct] = useState(initialState);
 
@@ -76,6 +77,7 @@ const EditProduct = () => {
       specs: updatedProduct.specs,
       url: updatedProduct.url,
       qty: updatedProduct.qty,
+      cartQty: updatedProduct.cartQty,
     }).then(() => {
       alert("Product was successfully updated");
     });
@@ -260,7 +262,7 @@ const EditProduct = () => {
                 Update Product
               </Button>
 
-              <Link to="/admin">
+              <Link to="/kris">
                 <Button
                   className="admin_back"
                   variant="contained"

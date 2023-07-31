@@ -15,17 +15,18 @@ const Header = observer(() => {
   const [isActive, setIsActive] = useState(false);
   let dropdownClose = useRef();
   //fuction to close the dropdown when clicking outside of it
-  useEffect(() => {
-    let handler = (e) => {
-      if (!dropdownClose.current.contains(e.target)) {
-        setIsActive(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  });
+  // useEffect(() => {
+  //   let handler = (e) => {
+  //     console.log(dropdownClose.current);
+  //     if (!dropdownClose.current.contains(e.target)) {
+  //       setIsActive(false);
+  //     }
+  //   };
+  //   document.addEventListener("mousedown", handler);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handler);
+  //   };
+  // });
   //dynamic dropdown loading
   let shopList =
     categories.length > 0 &&

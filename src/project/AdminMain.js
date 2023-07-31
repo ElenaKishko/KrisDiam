@@ -50,6 +50,7 @@ const AdminMain = () => {
     specs: [],
     url: [],
     qty: 0,
+    cartQty: 0,
   };
   const [newProduct, setNewProduct] = useState(initialState);
   //reference to new folder in firebase storage with the name of product entered by admin
@@ -118,6 +119,7 @@ const AdminMain = () => {
       specs: newProduct.specs,
       url: newProduct.url,
       qty: newProduct.qty,
+      cartQty: 0,
     }).then(() => {
       //reset "new product" form
       document.querySelector('[name="name"]').value = "";

@@ -25,17 +25,17 @@ function Filter(props) {
   let filterMenuRef = useRef();
 
   //fuction to close the filtering sidebar when clicking outside of it
-  useEffect(() => {
-    let handler = (e) => {
-      if (!filterMenuRef.current.contains(e.target)) {
-        setFilteringMenuIsActive(false);
-        setOverlay(false);
-        // Unsets background scrolling to use when side menu is closed
-        document.body.style.overflow = "unset";
-      }
-    };
-    document.addEventListener("mousedown", handler);
-  });
+  // useEffect(() => {
+  //   let handler = (e) => {
+  //     if (!filterMenuRef.current.contains(e.target)) {
+  //       setFilteringMenuIsActive(false);
+  //       setOverlay(false);
+  //       // Unsets background scrolling to use when side menu is closed
+  //       document.body.style.overflow = "unset";
+  //     }
+  //   };
+  //   document.addEventListener("mousedown", handler);
+  // });
 
   const handleFilterAndSort = (value) => {
     //set category/gemstone/sort variables

@@ -9,7 +9,7 @@ function BasketItem(props) {
   const product = storeData.wholeCollection.find(
     (item) => item.id === props.product.id
   );
-
+  console.log(product);
   return (
     <section className="basket_item">
       <Link
@@ -41,7 +41,7 @@ function BasketItem(props) {
               {" "}
               -{" "}
             </button>
-            <div className="basket_item_info_qty_count">{product.qty}</div>
+            <div className="basket_item_info_qty_count">{product.cartQty}</div>
             <button
               onClick={action(() => {
                 {

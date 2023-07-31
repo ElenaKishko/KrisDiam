@@ -49,7 +49,7 @@ function Product() {
                   <div className="product_info_descr">
                     {product.description}
                   </div>
-                  {product.qty == 0 ? (
+                  {product.cartQty == 0 ? (
                     <button
                       className="product_info_btn"
                       onClick={action(() => {
@@ -75,10 +75,9 @@ function Product() {
                           }
                         })}
                       >
-                        {" "}
-                        -{" "}
+                        -
                       </button>
-                      <button>{product.qty}</button>
+                      <button>{product.cartQty}</button>
                       <button
                         onClick={action(() => {
                           {
